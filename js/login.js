@@ -1,0 +1,14 @@
+$(()=>{
+	$("#login>:button").click(()=>{
+		$.post(
+			"data/users/login.php",
+			$("#login").serialize()
+		).then(data=>{
+			if(data.ok==1){
+				alert("登录成功!");
+				location=document.referrer;
+			}else
+				alert("登录失败!"+data.msg);
+		})
+	})
+})

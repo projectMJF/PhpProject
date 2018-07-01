@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+
+ <script type="text/javascript">
+		'usr strict'
+		//   OOP类封装，继承，多态
+		class Person{				   // 定义一个类 
+			constructor(pname,page){		//构造函数
+						this.pname=pname;    // 原型的对象
+						this.page=page;		// 原型的对象
+						function med(){			// 原型的方法
+							console.log("this is prototype's method");
+						}
+					}
+					static develop(){
+							console.log("父类(构造对象)的静态方法");
+					 }
+		 }
+		class PerGroup extends Person{		// 子类继承父类
+						constructor(pname,page,pGroupName){
+							super(pname,page);	//super()继承父类的属性对象和方法
+							this.pGroupName=pGroupName;    // 自有属性对象
+						 }
+						 study(){		// 多态 
+									console.log("子类的行为");
+						 }
+					}
+					var person = new Person("Alence","20");     // 实例化对象
+						console.log(person);   
+					//	person.develop();
+					    Person.develop();
+					//原型继承
+					PerGroup.prototype=new Person();     // 子类的原型继承父类的原型
+					console.log(PerGroup.prototype);
+
+					 // 子类调有父类的方法
+					 var per_group=new PerGroup("Vicky","22","Develop Group");
+						 console.log(per_group);
+						console.log( PerGroup.prototype.constructor==PerGroup);  // 构造函数原型判断
+						console.log("原型对象判断："+per_group.hasOwnProperty("pname")); 
+						//console.log( per_group.prototype.med);  
+
+ 
+/*	获取一个属性的四大特性:
+    var attrs=Object.getOwnPropertyDescriptor(obj,"属性") 
+	 添加: 只能用Object.defineProperty和defineProperties添加
+    四大特性: {
+      get(){ return this.数据属性 }
+      set(val){ 
+        如果验证val通过
+          this.数据属性=val
+        否则
+          报错
+      }
+      enumerable:
+      configurable:
+    }
+
+	
+	 */
+
+				var divClass={"color":"red","fontSize":"18","text-align":"center"};   // 创建父对象
+					Object.defineProperties(divClass,{    // 设置对象的多个特性值
+						
+					
+					 });
+				var divId=Object.create(divClass,{     // 子对象继承父对象的属性，并创建自有属性
+							background:{
+									value:vals,
+									writable:false,    
+									configurable:false,  // 可修改
+									enumerable:true    // 可遍历
+							 }
+				
+				  });
+			
+
+
+
+
+
+
+
+ 
+  </script>
+  
+ </body>
+</html>

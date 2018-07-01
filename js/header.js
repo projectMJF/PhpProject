@@ -1,0 +1,35 @@
+$(()=>{//加载页头
+	if(location.pathname.endsWith("cart.html")){
+		$.get("data/users/isLogin.php")
+			.then(data=>{
+			if(data.ok==0){
+				alert("请先登录!");
+				location="login.html";
+			}
+		})
+	}
+	$("#header").load("header.html",function(){
+		$("[data-trigger=search]")
+			.click(function(){
+			var $input=$("#txtSearch");
+			if($input.val().trim().length>0){
+				location=
+					"products.html?kw="+$input.val().trim();
+			}
+		})
+		$.getJSON("data/users/isLogin.php").then(data=>{
+			if(data.ok==0)
+				$("#loginList").show().next().hide()
+			else{
+				$("#loginList").hide().next().show();
+				$("#uname").html(data.uname);
+			}
+		})
+		$("#logout").click(function(){
+			$.get("data/users/logout.php").then(()=>{
+				$("#loginList").show().next().hide();
+			});
+			location.reload(true);
+		})
+	});
+});

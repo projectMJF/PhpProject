@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+
+ <script type="text/javascript">
+		'usr strict'
+		//   OOP类封装，继承，多态
+		class Person{				   // 定义一个类 
+			constructor(pname,page){		//构造函数
+						this.pname=pname;    // 原型的对象
+						this.page=page;		// 原型的对象
+						function(){			// 原型的方法
+							console.log("this is prototype's method");
+						}
+					}
+					static develop(){
+							console.log("构造函数的静态方法");
+					 }
+
+		 }
+
+		class PerGroup extends Person{		// 、子类继承父类
+						constructor(pname,page,pGroupName){
+							super();	//super()继承父类的属性对象和方法
+							this.pGroupName=pGroupName;
+						 }
+						function study(){		// 多态 
+									console.log("子类的行为");
+						 }
+					}
+					var person = new Person("Alence","20");
+						person.develop();
+
+
+ 
+ 
+ 
+  </script>
+  
+ </body>
+</html>
